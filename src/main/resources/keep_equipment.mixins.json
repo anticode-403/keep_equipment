@@ -4,6 +4,7 @@
   "package": "me.anticode.keep_equipment.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "InventoryMixin",
     "PlayerMixin",
     "ServerPlayerMixin"
   ],
