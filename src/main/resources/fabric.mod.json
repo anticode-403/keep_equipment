@@ -21,7 +21,8 @@
     ]
   },
   "mixins": [
-    "keep_equipment.mixins.json"
+    "keep_equipment.mixins.json",
+    "keep_equipment.trinkets.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=${loader_version}",

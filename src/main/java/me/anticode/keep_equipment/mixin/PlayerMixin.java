@@ -2,6 +2,7 @@ package me.anticode.keep_equipment.mixin;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import me.anticode.keep_equipment.KeepEquipment;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -27,6 +28,7 @@ public class PlayerMixin {
                     inventory.items.set(i, ItemStack.EMPTY);
                 }
             }
+
             i++;
         }
     }
