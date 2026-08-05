@@ -22,7 +22,7 @@ public class PlayerMixin {
         int i = 0;
         for(ItemStack itemStack : inventory.items) {
             if (i > 8) {
-                if (!itemStack.isEmpty()) {
+                if (!itemStack.isEmpty() && !itemStack.is(KeepEquipment.KEPT_EQUIPMENT)) {
                     ((Player)(Object)this).drop(itemStack, true, false);
                     inventory.items.set(i, ItemStack.EMPTY);
                 }
