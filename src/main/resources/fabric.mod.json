@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "keep_equipment",
+  "version": "${version}",
+  "name": "Keep Equipment",
+  "description": "An expansion to the Nether",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/keep_equipment/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "me.anticode.keep_equipment.client.KeepEquipmentDataGenerator"
+    ],
+    "client": [
+      "me.anticode.keep_equipment.client.KeepEquipmentClient"
+    ],
+    "main": [
+      "me.anticode.keep_equipment.KeepEquipment"
+    ]
+  },
+  "mixins": [
+    "keep_equipment.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
