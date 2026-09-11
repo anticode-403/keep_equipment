@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "keep_equipment",
+  "version": "${version}",
+  "name": "Keep Equipment",
+  "description": "A more balanced alternative to Keep Inventory!",
+  "authors": [
+    "anticode"
+  ],
+  "contact": {
+    "homepage": "anticode.me"
+  },
+  "license": "All-Rights-Reserved",
+  "icon": "assets/keep_equipment/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "me.anticode.keep_equipment.fabric.KeepEquipmentFabric"
+    ],
+    "client": [
+      "me.anticode.keep_equipment.fabric.client.KeepEquipmentFabricClient"
+    ]
+  },
+  "mixins": [
+    "keep_equipment.mixins.json",
+    "keep_equipment.trinkets.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

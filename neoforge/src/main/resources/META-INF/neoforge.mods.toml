@@ -1,0 +1,35 @@
+modLoader = "javafml"
+loaderVersion = "[2,)"
+#issueTrackerURL = ""
+license = "All Rights Reserved"
+
+[[mods]]
+modId = "keep_equipment"
+version = "${version}"
+displayName = "Keep Equipment"
+authors = "anticode"
+description = '''
+A more balanced alternative to Keep Inventory!
+'''
+#logoFile = ""
+
+[[dependencies.keep_equipment]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.keep_equipment]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+
+[[mixins]]
+config = "keep_equipment.mixins.json"
+
+[[mixins]]
+config = "keep_equipment.yigd.mixins.json"

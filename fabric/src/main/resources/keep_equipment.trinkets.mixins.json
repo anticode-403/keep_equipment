@@ -1,0 +1,17 @@
+{
+  "required": false,
+  "minVersion": "0.8",
+  "package": "me.anticode.keep_equipment.fabric.trinkets.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "TrinketMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}
