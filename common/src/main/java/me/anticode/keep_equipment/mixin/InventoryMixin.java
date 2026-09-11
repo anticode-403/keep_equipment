@@ -6,6 +6,7 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -31,7 +32,7 @@ public class InventoryMixin implements InventoryApi {
         for (List<ItemStack> list : this.compartments) {
             for (ItemStack stack : list) {
                 if (stack.isDamageableItem()) {
-                    stack.hurtAndBreak(Mth.ceil(stack.getMaxDamage() * KeepEquipment.config.durabilityDamage), level, (ServerPlayer) player, (item) -> player.onEquippedItemBroken(stack.getItem(), player.getEquipmentSlotForItem(stack)));
+                    stack.hurtAndBreak(Mth.ceil(stack.getMaxDamage() * KeepEquipment.config.durabilityDamage), (ServerPlayer) player, (item) -> player.broadcastBreakEvent(EquipmentSlot.MAINHAND));
                 }
             }
         }

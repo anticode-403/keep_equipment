@@ -1,7 +1,7 @@
 modLoader = "javafml"
-loaderVersion = "[2,)"
+loaderVersion = "[47,)"
 #issueTrackerURL = ""
-license = "All Rights Reserved"
+license = "GNU LGPL 3.0"
 
 [[mods]]
 modId = "keep_equipment"
@@ -14,22 +14,15 @@ A more balanced alternative to Keep Inventory!
 #logoFile = ""
 
 [[dependencies.keep_equipment]]
-modId = "neoforge"
-type = "required"
-versionRange = "[21,)"
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.keep_equipment]]
 modId = "minecraft"
-type = "required"
-versionRange = "[1.21.1,)"
+mandatory = true
+versionRange = "[1.20.1,)"
 ordering = "NONE"
 side = "BOTH"
-
-
-[[mixins]]
-config = "keep_equipment.mixins.json"
-
-[[mixins]]
-config = "keep_equipment.yigd.mixins.json"

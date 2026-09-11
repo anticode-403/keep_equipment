@@ -58,7 +58,7 @@ public abstract class PlayerMixin {
         }
     }
 
-    @Inject(method = "getBaseExperienceReward", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "getExperienceReward", at = @At("HEAD"), cancellable = true)
     public void dropPartialExperience(CallbackInfoReturnable<Integer> cir) {
         float total = 0;
         int level = this.experienceLevel;
