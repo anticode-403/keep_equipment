@@ -3,6 +3,7 @@ package me.anticode.keep_equipment.fabric.trinkets.mixin;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import dev.emi.trinkets.api.Trinket;
 import dev.emi.trinkets.api.TrinketEnums;
+import me.anticode.keep_equipment.KeepEquipment;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
@@ -11,6 +12,6 @@ public interface TrinketMixin {
 
     @ModifyReturnValue(method = "getDropRule", at = @At("TAIL"))
     default TrinketEnums.DropRule noDropRule(TrinketEnums.DropRule original) {
-        return TrinketEnums.DropRule.KEEP;
+        return KeepEquipment.config.keepTrinkets ? TrinketEnums.DropRule.KEEP : original;
     }
 }

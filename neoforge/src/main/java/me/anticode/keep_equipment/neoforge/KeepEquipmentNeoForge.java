@@ -15,6 +15,6 @@ public final class KeepEquipmentNeoForge {
 
     @SubscribeEvent
     public void onDead(CurioDropsEvent event) {
-        event.setCanceled(true);
+        if (KeepEquipment.config.keepTrinkets) event.setCanceled(true);
     }
 }

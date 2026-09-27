@@ -30,4 +30,7 @@ public class ServerConfig implements ConfigData {
 
     @Comment("Whether your armor should be kept on death.")
     public boolean keepArmor = true;
+
+    @Comment("Whether Curios/Trinket items should be kept on death.")
+    public boolean keepTrinkets = true;
 }
