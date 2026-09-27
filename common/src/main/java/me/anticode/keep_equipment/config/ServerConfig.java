@@ -24,4 +24,10 @@ public class ServerConfig implements ConfigData {
 
     @Comment("Whether your hotbar should be kept on death.")
     public boolean keepHotbar = true;
+
+    @Comment("Whether your offhand should be kept on death.")
+    public boolean keepOffhand = true;
+
+    @Comment("Whether your armor should be kept on death.")
+    public boolean keepArmor = true;
 }
