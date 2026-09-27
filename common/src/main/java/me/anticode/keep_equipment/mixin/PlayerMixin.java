@@ -44,14 +44,31 @@ public abstract class PlayerMixin {
     @WrapOperation(method = "dropEquipment", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Inventory;dropAll()V"))
     public void dropEquipment(Inventory instance, Operation<Void> original) {
         int i = 0;
+        int minimum = KeepEquipment.config.keepHotbar ? 8 : -1;
         for(ItemStack itemStack : inventory.items) {
-            if (i > 8) {
+            if (i > minimum) {
                 if (!itemStack.isEmpty() && !itemStack.is(KeepEquipment.KEPT_EQUIPMENT)) {
                     ((Player)(Object)this).drop(itemStack, true, false);
                     inventory.items.set(i, ItemStack.EMPTY);
                 }
             }
             i++;
+        }
+        if (!KeepEquipment.config.keepArmor) {
+            for (ItemStack itemStack : inventory.armor) {
+                if (!itemStack.isEmpty() && !itemStack.is(KeepEquipment.KEPT_EQUIPMENT)) {
+                    ((Player)(Object)this).drop(itemStack, true, false);
+                    inventory.armor.set(i, ItemStack.EMPTY);
+                }
+            }
+        }
+        if (!KeepEquipment.config.keepOffhand) {
+            for (ItemStack itemStack : inventory.offhand) {
+                if (!itemStack.isEmpty() && !itemStack.is(KeepEquipment.KEPT_EQUIPMENT)) {
+                    ((Player)(Object)this).drop(itemStack, true, false);
+                    inventory.offhand.set(i, ItemStack.EMPTY);
+                }
+            }
         }
         if (!((Player)(Object)this).level().isClientSide()) {
             ((InventoryApi)inventory).keepEquipment$damageRemaining((ServerLevel)((Player)(Object)this).level());
