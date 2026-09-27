@@ -21,4 +21,7 @@ public class ServerConfig implements ConfigData {
             If the total is lower than 1.0, that means that some amount of XP will be permanently lost.
             If the total is higher than 1.0, that means XP will be created out of thin air when you die.""")
     public float xpDropPercentage = 0.25F;
+
+    @Comment("Whether your hotbar should be kept on death.")
+    public boolean keepHotbar = true;
 }

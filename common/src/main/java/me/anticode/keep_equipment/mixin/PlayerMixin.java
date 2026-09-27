@@ -5,7 +5,6 @@ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import me.anticode.keep_equipment.KeepEquipment;
 import me.anticode.keep_equipment.api.InventoryApi;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -24,12 +23,6 @@ public abstract class PlayerMixin {
     private Inventory inventory;
 
     @Shadow
-    public abstract boolean isSpectator();
-
-    @Shadow
-    public int totalExperience;
-
-    @Shadow
     public int experienceLevel;
 
     @Shadow
@@ -44,8 +37,9 @@ public abstract class PlayerMixin {
     @WrapOperation(method = "dropEquipment", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Inventory;dropAll()V"))
     public void dropEquipment(Inventory instance, Operation<Void> original) {
         int i = 0;
+        int minimum = KeepEquipment.config.keepHotbar ? 8 : -1;
         for(ItemStack itemStack : inventory.items) {
-            if (i > 8) {
+            if (i > minimum) {
                 if (!itemStack.isEmpty() && !itemStack.is(KeepEquipment.KEPT_EQUIPMENT)) {
                     ((Player)(Object)this).drop(itemStack, true, false);
                     inventory.items.set(i, ItemStack.EMPTY);
