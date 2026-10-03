@@ -54,13 +54,16 @@ public abstract class PlayerMixin {
             }
             i++;
         }
+        i = 0;
         if (!KeepEquipment.config.keepArmor) {
             for (ItemStack itemStack : inventory.armor) {
                 if (!itemStack.isEmpty() && !itemStack.is(KeepEquipment.KEPT_EQUIPMENT)) {
                     ((Player)(Object)this).drop(itemStack, true, false);
                     inventory.armor.set(i, ItemStack.EMPTY);
                 }
+                i++;
             }
+            i = 0;
         }
         if (!KeepEquipment.config.keepOffhand) {
             for (ItemStack itemStack : inventory.offhand) {
@@ -68,6 +71,7 @@ public abstract class PlayerMixin {
                     ((Player)(Object)this).drop(itemStack, true, false);
                     inventory.offhand.set(i, ItemStack.EMPTY);
                 }
+                i++;
             }
         }
         if (!((Player)(Object)this).level().isClientSide()) {
