@@ -14,6 +14,8 @@ import org.slf4j.LoggerFactory;
 
 public final class KeepEquipment {
     public static final TagKey<Item> KEPT_EQUIPMENT = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("keep_equipment", "kept_equipment"));
+    public static final TagKey<Item> DAMAGE_IMMUNE = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("keep_equipment", "damage_immune"));
+    public static final TagKey<Item> DYING_BREAKS = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("keep_equipment", "dying_breaks"));
     public static final String MOD_ID = "keep_equipment";
     public static ServerConfig config;
 

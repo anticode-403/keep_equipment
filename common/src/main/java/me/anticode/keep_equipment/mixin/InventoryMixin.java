@@ -3,6 +3,8 @@ package me.anticode.keep_equipment.mixin;
 import me.anticode.keep_equipment.KeepEquipment;
 import me.anticode.keep_equipment.api.InventoryApi;
 import net.minecraft.core.NonNullList;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -28,9 +30,13 @@ public class InventoryMixin implements InventoryApi {
     public void keepEquipment$damageRemaining() {
         for (List<ItemStack> list : this.compartments) {
             for (ItemStack stack : list) {
-                if (stack.isDamageableItem()) {
+                if (stack.isDamageableItem() && !stack.is(KeepEquipment.DAMAGE_IMMUNE)) {
                     // Equipment should never be broken purely by dying.
-                    stack.setDamageValue(Math.min(stack.getMaxDamage() - 1, stack.getDamageValue() + Mth.ceil(stack.getMaxDamage() * KeepEquipment.config.durabilityDamage)));
+                    if (stack.is(KeepEquipment.DYING_BREAKS)) {
+                        stack.hurtAndBreak(Mth.ceil(stack.getMaxDamage() * KeepEquipment.config.durabilityDamage), (ServerLevel) player.level(), (ServerPlayer) player, (item) -> player.onEquippedItemBroken(stack.getItem(), player.getEquipmentSlotForItem(stack)));
+                    } else {
+                        stack.setDamageValue(Math.min(stack.getMaxDamage() - 1, stack.getDamageValue() + Mth.ceil(stack.getMaxDamage() * KeepEquipment.config.durabilityDamage)));
+                    }
                 }
             }
         }
