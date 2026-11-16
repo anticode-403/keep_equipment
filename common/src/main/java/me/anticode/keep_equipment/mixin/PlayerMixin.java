@@ -4,7 +4,6 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import me.anticode.keep_equipment.KeepEquipment;
 import me.anticode.keep_equipment.api.InventoryApi;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -69,7 +68,7 @@ public abstract class PlayerMixin {
             i = 0;
         }
         if (!((Player)(Object)this).level().isClientSide()) {
-            ((InventoryApi)inventory).keepEquipment$damageRemaining((ServerLevel)((Player)(Object)this).level());
+            ((InventoryApi)inventory).keepEquipment$damageRemaining();
         }
     }
 
